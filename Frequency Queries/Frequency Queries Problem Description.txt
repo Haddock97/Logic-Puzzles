@@ -1,0 +1,42 @@
+This program takes a list of int[] inputs and outputs a result list of integers
+
+Our queries are always int arrays with two elements like [x, y] where x and y are integers.
+
+x is restricted to either 1, 2, or 3 representing an action:
+1.) if x = 1, then we add y to whatever data structure fits this puzzle
+2.) if x = 2, then we remove one occurence of y from our data structure if present
+3.) if x = 3, check our data structure for any element that appears exactly y times, if true then add 1 to our result list of integers otherwise add 0
+
+The result is returning a list<Integer> after we have gone through all of our queries.
+
+For example, if we have:
+
+Operation: 
+[1, 1]  
+[2, 2]   
+[3, 2]   
+[1, 1]   
+[1, 1]   
+[2, 1]   
+[3, 2]
+
+Then we take the first operation, [1, 1] and have x = 1, y = 1 meaning we add 1 to our data structure, DS = [1]
+
+Similarly, [2, 2] would delete a single 2 from our data structure, but since no 2 is present nothing happens, DS = [1]
+
+[3,2] means we see if any elements appear y = 2 times in our DS, since it does not we append 0 to our list<integers>, DS = [1], list = [0]
+
+We continue until the last [3, 2] where we have DS = [1, 1] and since we have an element that appears twice, list = [0, 1]
+
+Thus our answer is the list: [0, 1]
+
+For a full progression view the table:
+
+Operation	DS		List
+[1, 1]  	[1]	
+[2, 2]   	[1]
+[3, 2]   	[1]		[0]
+[1, 1]   	[1 1]		[0]
+[1, 1]   	[1 1 1]		[0]
+[2, 1]   	[1 1]		[0]
+[3, 2]		[1 1] 		[0 1]
